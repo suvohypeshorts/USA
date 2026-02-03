@@ -1,115 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Check Offer Availability</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,#020617,#0f172a);
-  color:#fff;
-}
-.card{
-  width:95%;
-  max-width:450px;
-  background: rgba(2,6,23,0.95);
-  padding:40px 30px;
-  border-radius:25px;
-  box-shadow:0 20px 50px rgba(0,0,0,.6);
-  text-align:center;
-  position: relative;
-}
-h1{
-  font-size:24px;
-  margin-bottom:12px;
-}
-p{
-  font-size:15px;
-  color:#cbd5e1;
-  margin-bottom:25px;
-}
-button{
-  width:100%;
-  padding:16px;
-  margin:10px 0;
-  font-size:16px;
-  font-weight:600;
-  border:none;
-  border-radius:14px;
-  cursor:pointer;
-  color:#022c22;
-  background:#22c55e;
-  transition:0.3s;
-}
-button:hover{
-  background:#16a34a;
-}
-button:disabled{
-  opacity:0.6;
-  cursor:not-allowed;
-}
-/* Loader */
-.loader{
-  margin-top:20px;
-  border:4px solid #f3f3f3;
-  border-top:4px solid #22c55e;
-  border-radius:50%;
-  width:32px;
-  height:32px;
-  animation:spin 1s linear infinite;
-  display:none;
-  margin-left:auto;
-  margin-right:auto;
-}
-@keyframes spin{
-  0%{transform:rotate(0deg);}
-  100%{transform:rotate(360deg);}
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Exclusive Offers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-<div class="card">
-  <h1>Check Your Offer Availability</h1>
-  <p>Select your device below to continue</p>
 
-  <button onclick="goOffer('Android')">Android</button>
-  <button onclick="goOffer('iOS')">iOS</button>
-  <button onclick="goOffer('Desktop')">Desktop</button>
+<h1 class="main-title">🎁 Exclusive Rewards</h1>
 
-  <div class="loader" id="loader"></div>
-</div>
+<div id="offers" class="offers"></div>
 
-<script>
-// ---------- PREMIUM REDIRECT FUNCTION ----------
-function goOffer(device){
-  const loader = document.getElementById("loader");
-  loader.style.display = "block";
-
-  // Disable buttons while loading
-  document.querySelectorAll("button").forEach(b=>b.disabled=true);
-
-  // --------- Premium Direct Links (Edit your links here) ----------
-  const links = {
-    "Android":"https://singingfiles.com/show.php?l=0&u=2495881&id=73797",
-    "iOS":"https://singingfiles.com/show.php?l=0&u=2495881&id=73798",
-    "Desktop":"https://singingfiles.com/show.php?l=0&u=2495881&id=73799"
-  };
-
-  setTimeout(()=>{
-    loader.style.display = "none";
-    window.location.href = links[device]; // Direct redirect
-  },1500); // 1.5 sec loader for premium effect
-}
-</script>
+<script src="script.js"></script>
 </body>
 </html>
