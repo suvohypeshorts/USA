@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Exclusive Giveaway</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family: system-ui, Arial;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+.card{
+  background:rgba(0,0,0,.45);
+  padding:28px;
+  border-radius:16px;
+  max-width:420px;
+  text-align:center;
+}
+h1{font-size:24px;margin-bottom:10px;}
+p{font-size:15px;opacity:.9;}
+button{
+  margin-top:20px;
+  padding:14px 26px;
+  border:none;
+  border-radius:30px;
+  background:#00e676;
+  color:#000;
+  font-size:16px;
+  cursor:pointer;
+}
+button:hover{background:#00c853;}
+.small{font-size:12px;opacity:.7;margin-top:14px;}
+</style>
+</head>
+
+<body>
+<div class="card">
+  <h1>🎁 Limited-Time Giveaway</h1>
+  <p>Check availability for your device. Participation is free.</p>
+  <button onclick="goOffer()">Check Availability</button>
+  <div class="small">Availability may vary by region & device</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
