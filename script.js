@@ -10,24 +10,19 @@ function getDevice() {
 fetch(csvURL)
   .then(res => res.text())
   .then(text => {
-    const rows = text.trim().split("\n").slice(1);
+    const rows = text.trim().split("\n").slice(1); // skip header
     const device = getDevice();
     const container = document.getElementById("offers");
 
     rows.forEach(row => {
-      const [image,title,subtitle,android,ios,desktop] = row.split(",");
+      // Added 'button' as 4th column
+      const [image,title,subtitle,button,android,ios,desktop] = row.split(",");
 
       let link = desktop;
-      let btnText = "Continue";
+      let btnText = button || "Continue"; // Default if empty
 
-      if (device === "android") {
-        link = android;
-        btnText = "Continue on Android";
-      }
-      if (device === "ios") {
-        link = ios;
-        btnText = "Continue on iOS";
-      }
+      if (device === "android") link = android;
+      if (device === "ios") link = ios;
 
       const card = document.createElement("div");
       card.className = "card";
