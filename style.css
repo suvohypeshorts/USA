@@ -1,14 +1,15 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(135deg, #0f172a, #1c1c1c); /* dark premium background */
-  color: #fff;
+  background-color: #f9f9f9; /* premium white */
+  color: #111; /* dark text for readability */
 }
 
 .main-title {
   text-align: center;
   padding: 25px 10px;
   font-size: 28px;
+  color: #222;
 }
 
 .offers {
@@ -19,15 +20,16 @@ body {
 }
 
 .card {
-  background: #1e1e1e;
+  background: #ffffff; /* card white */
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,.5);
-  transition: transform .2s;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* subtle shadow */
+  transition: transform .2s, box-shadow .2s;
 }
 
 .card:hover {
   transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
 .card img {
@@ -43,18 +45,19 @@ body {
 .card h2 {
   font-size: 18px;
   margin: 0 0 6px;
+  color: #111;
 }
 
 .card p {
   font-size: 14px;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .btn {
   display: block;
   margin-top: 12px;
   padding: 14px;
-  background: linear-gradient(135deg, #ff416c, #ff4b2b); /* premium gradient */
+  background: linear-gradient(135deg, #ff416c, #ff4b2b); /* vibrant gradient button */
   color: #fff;
   text-align: center;
   border-radius: 12px;
