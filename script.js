@@ -10,30 +10,28 @@ function getDevice() {
 fetch(csvURL)
   .then(res => res.text())
   .then(text => {
-    const rows = text.trim().split("\n");
-    
-    // TOP HEADING - first row first column
-    const topHeading = rows[0].split(",")[0] || "Exclusive Offer";
-    document.getElementById("top-heading").innerText = topHeading;
-
-    // OFFERS - remaining rows
-    const dataRows = rows.slice(1);
+    const rows = text.trim().split("\n").slice(1); // skip header
     const device = getDevice();
     const container = document.getElementById("offers");
 
-    dataRows.forEach(row => {
-      const [image,title,subtitle,button,android,ios,desktop] = row.split(",");
+    rows.forEach(row => {
+      const [topHeading,image,title,subtitle,button,android,ios,desktop,movie] = row.split(",");
+
+      // Set top heading from first row
+      if(document.getElementById("topHeading").innerText === "Loading...") {
+        document.getElementById("topHeading").innerText = topHeading;
+      }
 
       let link = desktop;
-      let btnText = button || "Continue";
+      let btnText = button;
 
-      if (device === "android") link = android;
-      if (device === "ios") link = ios;
+      if(device === "android") link = android;
+      if(device === "ios") link = ios;
 
       const card = document.createElement("div");
       card.className = "card";
       card.innerHTML = `
-        <img src="${image}">
+        <img src="${image}" onclick="window.open('${movie}','_blank')">
         <div class="card-content">
           <h2>${title}</h2>
           <p>${subtitle}</p>
@@ -42,4 +40,5 @@ fetch(csvURL)
       `;
       container.appendChild(card);
     });
-  });
+  })
+  .catch(err => console.error("Error loading CSV:", err));
