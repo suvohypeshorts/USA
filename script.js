@@ -1,3 +1,15 @@
+const csvURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRcmMnH4yvxlsVlTnq31xbA5Hkdz1qiOYPFkZBehuOEhuPZUrft1njmvaVaIxwBDYsMXaV866Bc9bPD/pub?gid=0&single=true&output=csv";
+
+function getDevice() {
+  const ua = navigator.userAgent.toLowerCase();
+  if (/android/.test(ua)) return "android";
+  if (/iphone|ipad|ipod/.test(ua)) return "ios";
+  return "desktop";
+}
+
+// Hide "Loading..." text until CSV loads
+document.getElementById("topHeading").innerText = "";
+
 fetch(csvURL)
   .then(res => res.text())
   .then(text => {
@@ -5,12 +17,11 @@ fetch(csvURL)
     const device = getDevice();
     const container = document.getElementById("offers");
 
-    rows.forEach(row => {
-      // Trim all values
+    rows.forEach((row, index) => {
       const [topHeading,image,title,subtitle,button,android,ios,desktop,movie] = row.split(",").map(item => item.trim());
 
-      // Set top heading from first data row
-      if(document.getElementById("topHeading").innerText === "Loading...") {
+      // Set top heading once (first row only)
+      if(index === 0) {
         document.getElementById("topHeading").innerText = topHeading;
       }
 
