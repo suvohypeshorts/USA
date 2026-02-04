@@ -10,16 +10,22 @@ function getDevice() {
 fetch(csvURL)
   .then(res => res.text())
   .then(text => {
-    const rows = text.trim().split("\n").slice(1); // skip header
+    const rows = text.trim().split("\n");
+    
+    // TOP HEADING - first row first column
+    const topHeading = rows[0].split(",")[0] || "Exclusive Offer";
+    document.getElementById("top-heading").innerText = topHeading;
+
+    // OFFERS - remaining rows
+    const dataRows = rows.slice(1);
     const device = getDevice();
     const container = document.getElementById("offers");
 
-    rows.forEach(row => {
-      // Added 'button' as 4th column
+    dataRows.forEach(row => {
       const [image,title,subtitle,button,android,ios,desktop] = row.split(",");
 
       let link = desktop;
-      let btnText = button || "Continue"; // Default if empty
+      let btnText = button || "Continue";
 
       if (device === "android") link = android;
       if (device === "ios") link = ios;
